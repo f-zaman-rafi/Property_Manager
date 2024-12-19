@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 
 const PropertyDetail = () => {
@@ -49,6 +50,9 @@ const PropertyDetail = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8">
+      <Helmet>
+        <title>Details | Prop_Manager</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-4">{property.location}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div>

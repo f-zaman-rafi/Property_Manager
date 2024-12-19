@@ -9,18 +9,34 @@ const AllProperties = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 1000000]);
+  const [priceRange, setPriceRange] = useState([0, 100000000]);
+  const [sortOrder, setSortOrder] = useState("price-asc"); // New state for sorting order
 
   useEffect(() => {
     // Retrieve properties data from localStorage
     const savedProperties =
       JSON.parse(localStorage.getItem("properties")) || [];
-    console.log(savedProperties);
     // Combine properties from localStorage and JSON
     const allProperties = [...savedProperties, ...propertiesData];
     setProperties(allProperties);
-    setFilteredProperties(allProperties);
+    setFilteredProperties(allProperties); // Show all properties initially
   }, []);
+
+  // Apply sorting logic based on the selected sortOrder
+  const sortProperties = (filtered) => {
+    switch (sortOrder) {
+      case "price-asc":
+        return filtered.sort((a, b) => a.price - b.price);
+      case "price-desc":
+        return filtered.sort((a, b) => b.price - a.price);
+      case "location-asc":
+        return filtered.sort((a, b) => a.location.localeCompare(b.location));
+      case "location-desc":
+        return filtered.sort((a, b) => b.location.localeCompare(a.location));
+      default:
+        return filtered;
+    }
+  };
 
   // Filter properties based on search and selected filters
   const filterProperties = () => {
@@ -45,13 +61,15 @@ const AllProperties = () => {
       );
     });
 
+    // Sort the filtered properties immediately
+    filtered = sortProperties(filtered);
+
     setFilteredProperties(filtered);
   };
 
   // Handle change for search input
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
-    filterProperties();
   };
 
   // Handle change for filter inputs
@@ -60,15 +78,25 @@ const AllProperties = () => {
     if (name === "location") setLocation(value);
     if (name === "type") setType(value);
     if (name === "price") setPriceRange(value.split(",").map(Number));
-    filterProperties();
   };
+
+  // Handle change for sorting
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+  };
+
+  // Apply filters and sorting whenever these change
+  useEffect(() => {
+    filterProperties();
+  }, [searchQuery, location, type, priceRange, sortOrder]);
+
+  // Call filterProperties when the component mounts to show initial data
+  useEffect(() => {
+    filterProperties();
+  }, [properties]);
 
   return (
     <div className="p-4">
-      <Helmet>
-        <title>Add Product | Prop_Manager</title>
-      </Helmet>
-      <h1 className="text-3xl font-bold text-center my-4">All Properties</h1>
       {/* Search and Filter Inputs */}
       <div className="flex space-x-4 mb-6">
         <input
@@ -85,7 +113,6 @@ const AllProperties = () => {
           className="select select-bordered"
         >
           <option value="">All Locations</option>
-          {/* Add location options dynamically from data */}
           {properties.map((property) => (
             <option key={property.id} value={property.location}>
               {property.location}
@@ -99,7 +126,6 @@ const AllProperties = () => {
           className="select select-bordered"
         >
           <option value="">All Types</option>
-          {/* Add property types dynamically from data */}
           {properties.map((property) => (
             <option key={property.id} value={property.type}>
               {property.type}
@@ -112,14 +138,26 @@ const AllProperties = () => {
           onChange={handleFilterChange}
           className="select select-bordered"
         >
-          <option value="0,1000000000">All Prices</option>
+          <option value="0,100000000">All Prices</option>
           <option value="0,100000">Up to $100,000</option>
           <option value="0,200000">Up to $200,000</option>
           <option value="0,500000">Up to $500,000</option>
           <option value="0,800000">Up to $800,000</option>
           <option value="0,1000000">Up to $1,000,000</option>
           <option value="0,2000000">Up to $2,000,000</option>
-          <option value="0,3000000">Up to $3,000,000++</option>
+          <option value="0,3000000">Up to $3,000,000+</option>
+        </select>
+        {/* Sorting Select */}
+        <select
+          value={sortOrder}
+          onChange={handleSortChange}
+          className="select select-bordered"
+        >
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="location-asc">Location: A-Z</option>
+          <option value="location-desc">Location: Z-A</option>
         </select>
       </div>
 
