@@ -66,7 +66,9 @@ const ManageProperties = () => {
       <Helmet>
         <title>Manage Properties | Prop_Manager</title>
       </Helmet>
-      <h1 className="text-3xl font-bold mb-4">Manage Properties</h1>
+      <h1 className="text-3xl font-bold my-4 text-center mb-8">
+        Manage Properties
+      </h1>
 
       {/* Display list of properties */}
       {properties.length === 0 ? (

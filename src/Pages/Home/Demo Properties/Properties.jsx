@@ -10,7 +10,7 @@ const Properties = () => {
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
   const [priceRange, setPriceRange] = useState([0, 100000000]);
-  const [sortOrder, setSortOrder] = useState("price-asc"); // New state for sorting order
+  const [sortOrder, setSortOrder] = useState("default");
 
   useEffect(() => {
     // Retrieve properties data from localStorage
@@ -154,6 +154,7 @@ const Properties = () => {
           onChange={handleSortChange}
           className="select select-bordered"
         >
+          <option value="default">Default</option>
           <option value="price-asc">Price: Low to High</option>
           <option value="price-desc">Price: High to Low</option>
           <option value="location-asc">Location: A-Z</option>

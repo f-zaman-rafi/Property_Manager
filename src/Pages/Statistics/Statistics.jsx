@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { Helmet } from "react-helmet";
 
 ChartJS.register(
   CategoryScale,
@@ -104,6 +105,10 @@ const Statistics = () => {
 
   return (
     <div className="p-4">
+      <Helmet>
+        <title>Statistics | Prop_Manager</title>
+      </Helmet>
+      <h1 className="text-3xl font-bold mb-8 text-center">Statistics</h1>
       <h2 className="text-xl font-semibold mb-4">Property Statistics</h2>
 
       <div className="chart-container">

@@ -10,7 +10,7 @@ const AllProperties = () => {
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
   const [priceRange, setPriceRange] = useState([0, 100000000]);
-  const [sortOrder, setSortOrder] = useState("price-asc"); // New state for sorting order
+  const [sortOrder, setSortOrder] = useState("default"); // New state for sorting order
 
   useEffect(() => {
     // Retrieve properties data from localStorage
@@ -97,6 +97,12 @@ const AllProperties = () => {
 
   return (
     <div className="p-4">
+      <Helmet>
+        <title>All Properties | Prop_Manager</title>
+      </Helmet>
+      <h1 className="text-3xl font-bold my-4 mb-8 text-center">
+        All Properties
+      </h1>
       {/* Search and Filter Inputs */}
       <div className="flex space-x-4 mb-6">
         <input
