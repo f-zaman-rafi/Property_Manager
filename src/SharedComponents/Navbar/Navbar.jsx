@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Navbar = () => {
   return (
@@ -27,46 +28,62 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a>Home</a>
+                <Link to="/">
+                  <a>Home</a>
+                </Link>
               </li>
+              <Link to="/all-properties">
+                <li>
+                  <a>All Properties</a>
+                </li>
+              </Link>
               <li>
-                <a>Parent</a>
+                <a>Dashboard</a>
                 <ul className="p-2">
                   <li>
-                    <a>Submenu 1</a>
+                    <a>
+                      <Link to="/add-property">Add property</Link>
+                    </a>
                   </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
+                  <Link to="/manage-property">
+                    <li>
+                      <a>Manage properties</a>
+                    </li>
+                  </Link>
                 </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Prop_Manager</a>
+          <Link to="/">
+            <a className="btn btn-ghost text-xl">Prop_Manager</a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Home</a>
+              <a>
+                <Link to="/">Home</Link>
+              </a>
             </li>
+            <Link to="/all-properties">
+              <li>
+                <a>All Properties</a>
+              </li>
+            </Link>
             <li>
               <details>
-                <summary>Parent</summary>
+                <summary>Dashboard</summary>
                 <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
+                  <Link to="/add-property">
+                    <a>Add property</a>
+                  </Link>
+                  <Link to="/manage-property">
+                    <li>
+                      <a>Manage properties</a>
+                    </li>
+                  </Link>
                 </ul>
               </details>
-            </li>
-            <li>
-              <a>Item 3</a>
             </li>
           </ul>
         </div>

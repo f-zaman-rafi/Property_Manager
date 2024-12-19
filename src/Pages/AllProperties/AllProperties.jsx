@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import propertiesData from "../../../../public/properties.json"; // Import the data from JSON
+import propertiesData from "../../../public/properties.json"; // Import the data from JSON
 import { Link } from "react-router-dom";
 
-const Properties = () => {
+const AllProperties = () => {
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -64,6 +64,9 @@ const Properties = () => {
 
   return (
     <div className="p-4">
+      <h1 className="text-3xl font-bold text-center mt-8 mb-3">
+        All Properties
+      </h1>
       {/* Search and Filter Inputs */}
       <div className="flex space-x-4 mb-6">
         <input
@@ -147,4 +150,4 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default AllProperties;

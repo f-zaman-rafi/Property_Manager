@@ -9,7 +9,8 @@
     "bathrooms": 2,
     "city": "New York City",
     "state": "NY",
-    "photos": ["/images/0.jpg", "/images/1.jpg"]
+    "photos": ["/images/0.jpg", "/images/1.jpg"],
+    "status": "For Sale"
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@
     "bathrooms": 3,
     "city": "Los Angeles",
     "state": "CA",
-    "photos": ["/images/1.jpg", "/images/2.jpg"]
+    "photos": ["/images/1.jpg", "/images/2.jpg"],
+    "status": "For Rent"
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@
     "bathrooms": 2,
     "city": "San Francisco",
     "state": "CA",
-    "photos": ["/images/2.jpg", "/images/3.jpg"]
+    "photos": ["/images/2.jpg", "/images/3.jpg"],
+    "status": "For Sale"
   },
   {
     "id": 4,
@@ -45,7 +48,8 @@
     "bathrooms": 2,
     "city": "Chicago",
     "state": "IL",
-    "photos": ["/images/3.jpg", "/images/4.jpg"]
+    "photos": ["/images/3.jpg", "/images/4.jpg"],
+    "status": "For Rent"
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@
     "bathrooms": 2,
     "city": "Miami",
     "state": "FL",
-    "photos": ["/images/4.jpg", "/images/5.jpg"]
+    "photos": ["/images/4.jpg", "/images/5.jpg"],
+    "status": "For Sale"
   },
   {
     "id": 6,
@@ -69,7 +74,8 @@
     "bathrooms": 3,
     "city": "Austin",
     "state": "TX",
-    "photos": ["/images/5.jpg", "/images/6.jpg"]
+    "photos": ["/images/5.jpg", "/images/6.jpg"],
+    "status": "For Rent"
   },
   {
     "id": 7,
@@ -81,7 +87,8 @@
     "bathrooms": 2,
     "city": "Seattle",
     "state": "WA",
-    "photos": ["/images/6.jpg", "/images/7.jpg"]
+    "photos": ["/images/6.jpg", "/images/7.jpg"],
+    "status": "For Sale"
   },
   {
     "id": 8,
@@ -93,7 +100,8 @@
     "bathrooms": 1,
     "city": "Dallas",
     "state": "TX",
-    "photos": ["/images/7.jpg", "/images/8.jpg"]
+    "photos": ["/images/7.jpg", "/images/8.jpg"],
+    "status": "For Rent"
   },
   {
     "id": 9,
@@ -105,7 +113,8 @@
     "bathrooms": 4,
     "city": "Boston",
     "state": "MA",
-    "photos": ["/images/8.jpg", "/images/9.jpg"]
+    "photos": ["/images/8.jpg", "/images/9.jpg"],
+    "status": "For Sale"
   },
   {
     "id": 10,
@@ -117,6 +126,138 @@
     "bathrooms": 2,
     "city": "Denver",
     "state": "CO",
-    "photos": ["/images/9.jpg", "/images/0.jpg"]
-  }
-]
+    "photos": ["/images/9.jpg", "/images/0.jpg"],
+    "status": "For Rent"
+  },
+    {
+      "id": 11,
+      "location": "Kuala Lumpur",
+      "price": 800000,
+      "thumbnail": "/images/0.jpg",
+      "type": "Condo",
+      "rooms": 3,
+      "bathrooms": 2,
+      "city": "Kuala Lumpur",
+      "state": "WP",
+      "photos": ["/images/0.jpg", "/images/1.jpg"],
+      "status": "For Sale"
+    },
+    {
+      "id": 12,
+      "location": "Penang",
+      "price": 750000,
+      "thumbnail": "/images/1.jpg",
+      "type": "House",
+      "rooms": 4,
+      "bathrooms": 3,
+      "city": "George Town",
+      "state": "Penang",
+      "photos": ["/images/1.jpg", "/images/2.jpg"],
+      "status": "For Rent"
+    },
+    {
+      "id": 13,
+      "location": "Johor Bahru",
+      "price": 900000,
+      "thumbnail": "/images/2.jpg",
+      "type": "Townhouse",
+      "rooms": 4,
+      "bathrooms": 3,
+      "city": "Johor Bahru",
+      "state": "Johor",
+      "photos": ["/images/2.jpg", "/images/3.jpg"],
+      "status": "For Sale"
+    },
+    {
+      "id": 14,
+      "location": "Malacca",
+      "price": 550000,
+      "thumbnail": "/images/3.jpg",
+      "type": "Apartment",
+      "rooms": 2,
+      "bathrooms": 1,
+      "city": "Malacca City",
+      "state": "Malacca",
+      "photos": ["/images/3.jpg", "/images/4.jpg"],
+      "status": "For Rent"
+    },
+    {
+      "id": 15,
+      "location": "Kota Kinabalu",
+      "price": 700000,
+      "thumbnail": "/images/4.jpg",
+      "type": "House",
+      "rooms": 3,
+      "bathrooms": 2,
+      "city": "Kota Kinabalu",
+      "state": "Sabah",
+      "photos": ["/images/4.jpg", "/images/5.jpg"],
+      "status": "For Sale"
+    },
+    {
+      "id": 16,
+      "location": "Shah Alam",
+      "price": 850000,
+      "thumbnail": "/images/5.jpg",
+      "type": "Condo",
+      "rooms": 3,
+      "bathrooms": 2,
+      "city": "Shah Alam",
+      "state": "Selangor",
+      "photos": ["/images/5.jpg", "/images/6.jpg"],
+      "status": "For Rent"
+    },
+    {
+      "id": 17,
+      "location": "Ipoh",
+      "price": 650000,
+      "thumbnail": "/images/6.jpg",
+      "type": "Apartment",
+      "rooms": 2,
+      "bathrooms": 1,
+      "city": "Ipoh",
+      "state": "Perak",
+      "photos": ["/images/6.jpg", "/images/7.jpg"],
+      "status": "For Sale"
+    },
+    {
+      "id": 18,
+      "location": "Seremban",
+      "price": 950000,
+      "thumbnail": "/images/7.jpg",
+      "type": "Townhouse",
+      "rooms": 5,
+      "bathrooms": 3,
+      "city": "Seremban",
+      "state": "Negeri Sembilan",
+      "photos": ["/images/7.jpg", "/images/8.jpg"],
+      "status": "For Rent"
+    },
+    {
+      "id": 19,
+      "location": "Petaling Jaya",
+      "price": 1200000,
+      "thumbnail": "/images/8.jpg",
+      "type": "House",
+      "rooms": 6,
+      "bathrooms": 4,
+      "city": "Petaling Jaya",
+      "state": "Selangor",
+      "photos": ["/images/8.jpg", "/images/9.jpg"],
+      "status": "For Sale"
+    },
+    {
+      "id": 20,
+      "location": "Cyberjaya",
+      "price": 650000,
+      "thumbnail": "/images/9.jpg",
+      "type": "Condo",
+      "rooms": 4,
+      "bathrooms": 2,
+      "city": "Cyberjaya",
+      "state": "Selangor",
+      "photos": ["/images/9.jpg", "/images/0.jpg"],
+      "status": "For Rent"
+    }
+  ]
+  
