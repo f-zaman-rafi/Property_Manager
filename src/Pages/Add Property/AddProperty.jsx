@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router";
 import { v4 as uuidv4 } from "uuid"; // Import uuid
 
@@ -80,7 +81,10 @@ const AddProperty = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Add Property</h1>
+      <Helmet>
+        <title>Add Properties | Prop_Manager</title>
+      </Helmet>{" "}
+      <h1 className="text-3xl font-bold my-4 text-center">Add Property</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
@@ -297,7 +301,6 @@ const AddProperty = () => {
           Add Property
         </button>
       </form>
-
       {/* Success Popup */}
       {showPopup && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">

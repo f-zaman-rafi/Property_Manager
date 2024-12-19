@@ -5,6 +5,7 @@ import PropertyDetail from "../Pages/Home/Demo Properties/PropertyDetail";
 import ManageProperties from "../Pages/ManageProperties/ManageProperties";
 import AddProperty from "../Pages/Add Property/AddProperty";
 import AllProperties from "../Pages/AllProperties/AllProperties";
+import Statistics from "../Pages/Statistics/Statistics";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/all-properties",
         element: <AllProperties />,
+      },
+      {
+        path: "/statistics",
+        element: <Statistics />,
       },
     ],
   },

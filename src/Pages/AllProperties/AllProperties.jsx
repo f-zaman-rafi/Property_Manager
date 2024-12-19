@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import propertiesData from "../../../public/properties.json"; // Import the data from JSON
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AllProperties = () => {
   const [properties, setProperties] = useState([]);
@@ -64,9 +65,10 @@ const AllProperties = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold text-center mt-8 mb-3">
-        All Properties
-      </h1>
+      <Helmet>
+        <title>Add Product | Prop_Manager</title>
+      </Helmet>
+      <h1 className="text-3xl font-bold text-center my-4">All Properties</h1>
       {/* Search and Filter Inputs */}
       <div className="flex space-x-4 mb-6">
         <input
@@ -117,7 +119,7 @@ const AllProperties = () => {
           <option value="0,800000">Up to $800,000</option>
           <option value="0,1000000">Up to $1,000,000</option>
           <option value="0,2000000">Up to $2,000,000</option>
-          <option value="0,3000000">Up to $3,000,000+</option>
+          <option value="0,3000000">Up to $3,000,000++</option>
         </select>
       </div>
 

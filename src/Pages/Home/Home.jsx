@@ -4,7 +4,8 @@ import Properties from "./Demo Properties/Properties";
 const Home = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center mt-8">Latest Properties</h1>
+      <title>Prop_Manager</title>
+      <h1 className="text-3xl font-bold text-center my-8">Latest Properties</h1>
       <Properties />
     </div>
   );

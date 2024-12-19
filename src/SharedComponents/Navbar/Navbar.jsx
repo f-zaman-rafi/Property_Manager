@@ -38,8 +38,8 @@ const Navbar = () => {
                 </li>
               </Link>
               <li>
-                <a>Dashboard</a>
-                <ul className="p-2">
+                <a className="">Dashboard</a>
+                <ul className="p-2 ">
                   <li>
                     <a>
                       <Link to="/add-property">Add property</Link>
@@ -72,10 +72,13 @@ const Navbar = () => {
             </Link>
             <li>
               <details>
-                <summary>Dashboard</summary>
+                <summary className="">Dashboard</summary>
                 <ul className="p-2">
                   <Link to="/add-property">
-                    <a>Add property</a>
+                    <li>
+                      {" "}
+                      <a>Add property</a>
+                    </li>
                   </Link>
                   <Link to="/manage-property">
                     <li>
@@ -88,7 +91,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link to="/statistics">
+            <a className="btn btn-outline">Statistics</a>
+          </Link>
         </div>
       </div>
     </div>
