@@ -12,9 +12,9 @@ const AddProperty = () => {
     bathrooms: "",
     city: "",
     state: "",
-    status: "", // Added status to formData
-    thumbnail: "", // For thumbnail image URL
-    photos: [], // Array to store multiple image URLs
+    status: "",
+    thumbnail: "",
+    photos: [],
   });
 
   const [showPopup, setShowPopup] = useState(false); // State for showing popup

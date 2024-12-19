@@ -2,82 +2,86 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 const ManageProperties = () => {
-  const [properties, setProperties] = useState([]); // State to hold the properties
-  const [editingProperty, setEditingProperty] = useState(null); // State for editing property
-  const [showConfirmDelete, setShowConfirmDelete] = useState(false); // State to control delete confirmation popup
-  const [propertyToDelete, setPropertyToDelete] = useState(null); // State to hold property to be deleted
-  const [showEditPopup, setShowEditPopup] = useState(false); // State to control edit popup visibility
+  // State to manage the list of properties
+  const [properties, setProperties] = useState([]);
+  // State to manage the property being edited
+  const [editingProperty, setEditingProperty] = useState(null);
+  // State to control visibility of the delete confirmation
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  // State to manage the property to be deleted
+  const [propertyToDelete, setPropertyToDelete] = useState(null);
+  // State to control visibility of the edit popup
+  const [showEditPopup, setShowEditPopup] = useState(false);
 
-  // Fetch properties from localStorage when the component mounts
+  // Fetch properties from localStorage when component mounts
   useEffect(() => {
     const savedProperties =
       JSON.parse(localStorage.getItem("properties")) || [];
     setProperties(savedProperties);
   }, []);
 
-  // Handle edit button click (open popup with pre-filled data)
+  // Handle edit button click, open popup with pre-filled data
   const handleEdit = (property) => {
-    setEditingProperty(property); // Set the current property for editing
-    setShowEditPopup(true); // Open the edit popup
+    setEditingProperty(property);
+    setShowEditPopup(true); // Show the edit popup
   };
 
-  // Handle input change for inline editing in the popup
+  // Handle input changes for inline editing in the popup
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditingProperty((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value, // Update the editing property with new values
     }));
   };
 
-  // Save edited property to localStorage
+  // Save edited property back to localStorage
   const saveEdit = () => {
     const updatedProperties = properties.map((prop) =>
       prop.id === editingProperty.id ? editingProperty : prop
     );
     setProperties(updatedProperties);
-    localStorage.setItem("properties", JSON.stringify(updatedProperties));
+    localStorage.setItem("properties", JSON.stringify(updatedProperties)); // Save changes in localStorage
     setShowEditPopup(false); // Close the edit popup
   };
 
-  // Handle delete button click (show confirmation)
+  // Handle delete button click, show confirmation
   const handleDelete = (property) => {
     setPropertyToDelete(property);
-    setShowConfirmDelete(true);
+    setShowConfirmDelete(true); // Show the delete confirmation popup
   };
 
-  // Handle the confirmation of deletion
+  // Confirm the deletion and update the property list
   const confirmDelete = () => {
     const updatedProperties = properties.filter(
       (property) => property.id !== propertyToDelete.id
     );
     setProperties(updatedProperties);
-    localStorage.setItem("properties", JSON.stringify(updatedProperties)); // Update localStorage
+    localStorage.setItem("properties", JSON.stringify(updatedProperties)); // Save updated list to localStorage
     setShowConfirmDelete(false); // Close the confirmation popup
   };
 
-  // Handle canceling the deletion
+  // Cancel the deletion
   const cancelDelete = () => {
     setShowConfirmDelete(false); // Close the confirmation popup
   };
 
   return (
-    <div className=" mx-auto p-8">
+    <div className="mx-auto p-8">
       <Helmet>
-        <title>Manage Properties | Prop_Manager</title>
+        <title>Manage Properties | Prop_Manager</title> {/* Set page title */}
       </Helmet>
       <h1 className="text-3xl font-bold my-4 text-center mb-8">
         Manage Properties
       </h1>
 
-      {/* Display list of properties */}
+      {/* Display properties or a message if no properties exist */}
       {properties.length === 0 ? (
         <p>No properties available.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {properties.map((property) => (
             <div key={property.id} className="border rounded-lg p-4">
-              {/* Property Card */}
               <div className="border p-4 rounded-lg shadow-lg">
                 <img
                   src={property.thumbnail}
@@ -97,10 +101,10 @@ const ManageProperties = () => {
                 </p>
                 <p className="text-sm text-gray-500">
                   {property.city}, {property.state}
-                  <p className=" font-semibold">${property.price}</p>
+                  <p className="font-semibold">${property.price}</p>
                 </p>
 
-                {/* Buttons for Edit and Delete */}
+                {/* Buttons for editing and deleting */}
                 <div className="mt-4 flex gap-4">
                   <button
                     onClick={() => handleEdit(property)}
@@ -121,7 +125,7 @@ const ManageProperties = () => {
         </div>
       )}
 
-      {/* Confirmation Popup for Deletion */}
+      {/* Confirmation popup for property deletion */}
       {showConfirmDelete && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-md shadow-lg">
@@ -146,131 +150,47 @@ const ManageProperties = () => {
         </div>
       )}
 
-      {/* Edit Popup */}
+      {/* Edit property popup */}
       {showEditPopup && editingProperty && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-md shadow-lg w-auto">
             <h2 className="text-xl font-semibold mb-4">Edit Property</h2>
             <form className="grid grid-cols-3 gap-5">
-              <div className="mb-4">
-                <label
-                  htmlFor="location"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Location
-                </label>
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  value={editingProperty.location}
-                  onChange={handleChange}
-                  className="mt-2 w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
+              {/* Form inputs for editing property details */}
+              {[
+                "location",
+                "price",
+                "type",
+                "city",
+                "state",
+                "rooms",
+                "bathrooms",
+              ].map((field) => (
+                <div key={field} className="mb-4">
+                  <label
+                    htmlFor={field}
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    {field.charAt(0).toUpperCase() + field.slice(1)}
+                  </label>
+                  <input
+                    type={
+                      field === "price" ||
+                      field === "rooms" ||
+                      field === "bathrooms"
+                        ? "number"
+                        : "text"
+                    }
+                    id={field}
+                    name={field}
+                    value={editingProperty[field]}
+                    onChange={handleChange}
+                    className="mt-2 w-full p-2 border border-gray-300 rounded-md"
+                  />
+                </div>
+              ))}
 
-              <div className="mb-4">
-                <label
-                  htmlFor="price"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Price
-                </label>
-                <input
-                  type="number"
-                  id="price"
-                  name="price"
-                  value={editingProperty.price}
-                  onChange={handleChange}
-                  className="mt-2 w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="type"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Type
-                </label>
-                <input
-                  type="text"
-                  id="type"
-                  name="type"
-                  value={editingProperty.type}
-                  onChange={handleChange}
-                  className="mt-2 w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="city"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  City
-                </label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  value={editingProperty.city}
-                  onChange={handleChange}
-                  className="mt-2 w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="state"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  State
-                </label>
-                <input
-                  type="text"
-                  id="state"
-                  name="state"
-                  value={editingProperty.state}
-                  onChange={handleChange}
-                  className="mt-2 w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="rooms"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Rooms
-                </label>
-                <input
-                  type="number"
-                  id="rooms"
-                  name="rooms"
-                  value={editingProperty.rooms}
-                  onChange={handleChange}
-                  className="mt-2 w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="bathrooms"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Bathrooms
-                </label>
-                <input
-                  type="number"
-                  id="bathrooms"
-                  name="bathrooms"
-                  value={editingProperty.bathrooms}
-                  onChange={handleChange}
-                  className="mt-2 w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
+              {/* Buttons for saving or canceling changes */}
               <button
                 type="button"
                 onClick={saveEdit}

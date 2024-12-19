@@ -22,6 +22,8 @@ ChartJS.register(
 
 const Statistics = () => {
   const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true); // Track loading state
+  const [error, setError] = useState(null); // Track error state
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +44,9 @@ const Statistics = () => {
         setProperties(combinedData);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError("Failed to load data. Please try again later.");
+      } finally {
+        setLoading(false); // Stop loading after data is fetched
       }
     };
 
@@ -58,8 +63,16 @@ const Statistics = () => {
     }
   };
 
+  if (loading) {
+    return <div className="text-center">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-red-600">{error}</div>;
+  }
+
   if (properties.length === 0) {
-    return <div>Loading...</div>;
+    return <div className="text-center">No properties available.</div>;
   }
 
   const locations = [

@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
-import propertiesData from "../../../public/properties.json"; // Import the data from JSON
+import propertiesData from "../../../public/properties.json"; // Importing properties data from a local JSON file
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const AllProperties = () => {
-  const [properties, setProperties] = useState([]);
-  const [filteredProperties, setFilteredProperties] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [location, setLocation] = useState("");
-  const [type, setType] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 100000000]);
-  const [sortOrder, setSortOrder] = useState("default"); // New state for sorting order
+  const [properties, setProperties] = useState([]); // State to store all properties
+  const [filteredProperties, setFilteredProperties] = useState([]); // State to store filtered properties based on search and filters
+  const [searchQuery, setSearchQuery] = useState(""); // State to handle search query input
+  const [location, setLocation] = useState(""); // State to handle location filter
+  const [type, setType] = useState(""); // State to handle property type filter
+  const [priceRange, setPriceRange] = useState([0, 100000000]); // State to handle price range filter
+  const [sortOrder, setSortOrder] = useState("default"); // State for sorting properties (e.g., by price or location)
 
   useEffect(() => {
-    // Retrieve properties data from localStorage
+    // On component mount, retrieve properties data from localStorage
     const savedProperties =
       JSON.parse(localStorage.getItem("properties")) || [];
-    // Combine properties from localStorage and JSON
+    // Combine saved properties with properties from the JSON file
     const allProperties = [...savedProperties, ...propertiesData];
-    setProperties(allProperties);
-    setFilteredProperties(allProperties); // Show all properties initially
+    setProperties(allProperties); // Set all properties to state
+    setFilteredProperties(allProperties); // Initially, show all properties
   }, []);
 
-  // Apply sorting logic based on the selected sortOrder
+  // Function to apply sorting to the properties list based on selected sorting option
   const sortProperties = (filtered) => {
     switch (sortOrder) {
       case "price-asc":
@@ -38,7 +38,7 @@ const AllProperties = () => {
     }
   };
 
-  // Filter properties based on search and selected filters
+  // Function to filter properties based on search query and filter values
   const filterProperties = () => {
     let filtered = properties.filter((property) => {
       const [minPrice, maxPrice] = priceRange;
@@ -61,18 +61,18 @@ const AllProperties = () => {
       );
     });
 
-    // Sort the filtered properties immediately
+    // Sort the filtered properties immediately after filtering
     filtered = sortProperties(filtered);
 
-    setFilteredProperties(filtered);
+    setFilteredProperties(filtered); // Update the state with the filtered and sorted properties
   };
 
-  // Handle change for search input
+  // Function to handle changes in the search input field
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    setSearchQuery(e.target.value); // Update the search query state
   };
 
-  // Handle change for filter inputs
+  // Function to handle changes in the filter inputs (location, type, price range)
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     if (name === "location") setLocation(value);
@@ -80,23 +80,24 @@ const AllProperties = () => {
     if (name === "price") setPriceRange(value.split(",").map(Number));
   };
 
-  // Handle change for sorting
+  // Function to handle sorting order change
   const handleSortChange = (e) => {
-    setSortOrder(e.target.value);
+    setSortOrder(e.target.value); // Update the sort order state
   };
 
-  // Apply filters and sorting whenever these change
+  // Apply filters and sorting whenever these change (searchQuery, location, type, priceRange, sortOrder)
   useEffect(() => {
-    filterProperties();
+    filterProperties(); // Reapply filters whenever any of the filter or sort values change
   }, [searchQuery, location, type, priceRange, sortOrder]);
 
-  // Call filterProperties when the component mounts to show initial data
+  // Call filterProperties again when properties are updated (e.g., from localStorage)
   useEffect(() => {
-    filterProperties();
+    filterProperties(); // Reapply filters when the properties list changes
   }, [properties]);
 
   return (
     <div className="p-4">
+      {/* Set the page title using Helmet for better SEO */}
       <Helmet>
         <title>All Properties | Prop_Manager</title>
       </Helmet>
@@ -105,6 +106,7 @@ const AllProperties = () => {
       </h1>
       {/* Search and Filter Inputs */}
       <div className="flex space-x-4 mb-6">
+        {/* Search input for querying properties */}
         <input
           type="text"
           placeholder="Search..."
@@ -112,6 +114,7 @@ const AllProperties = () => {
           onChange={handleSearchChange}
           className="input input-bordered"
         />
+        {/* Dropdown for selecting location filter */}
         <select
           name="location"
           value={location}
@@ -125,6 +128,7 @@ const AllProperties = () => {
             </option>
           ))}
         </select>
+        {/* Dropdown for selecting property type filter */}
         <select
           name="type"
           value={type}
@@ -138,6 +142,7 @@ const AllProperties = () => {
             </option>
           ))}
         </select>
+        {/* Dropdown for selecting price range filter */}
         <select
           name="price"
           value={priceRange.join(",")}
@@ -153,7 +158,7 @@ const AllProperties = () => {
           <option value="0,2000000">Up to $2,000,000</option>
           <option value="0,3000000">Up to $3,000,000+</option>
         </select>
-        {/* Sorting Select */}
+        {/* Dropdown for selecting sorting order */}
         <select
           value={sortOrder}
           onChange={handleSortChange}
@@ -175,18 +180,21 @@ const AllProperties = () => {
             key={property.id}
           >
             <div className="border p-4 rounded-lg shadow-lg">
+              {/* Property Thumbnail */}
               <img
                 src={property.thumbnail}
                 alt={`Property in ${property.location}`}
                 className="w-full h-40 object-cover rounded-md"
               />
               <div className="flex justify-between">
+                {/* Property Location and Status */}
                 <h3 className="text-xl font-semibold mt-2">
                   {property.location}
                 </h3>
                 <h3 className="text-xl mt-2 font-thin">{property.status}</h3>
               </div>
               <p className="text-gray-500">{property.type}</p>
+              {/* Property Price */}
               <p className="text-lg font-semibold">${property.price}</p>
             </div>
           </Link>
