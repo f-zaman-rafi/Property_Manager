@@ -5,7 +5,7 @@
 
 A modern real estate property management application built with React, offering comprehensive property listing management and insightful analytics.
 
-![Property Manager Demo](https://via.placeholder.com/800x400?text=Property+Manager+Demo)
+
 
 ## 🚀 Features
 
@@ -148,7 +148,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-- **Faisal Zaman** - *Lead Developer* - [GitHub](https://github.com/f-zaman-rafi)
+- **F Zaman Rafi** - *Lead Developer* - [GitHub](https://github.com/f-zaman-rafi)
 - Email: f.zaman.rafi@gmail.com
 
 ## 🙏 Acknowledgments
