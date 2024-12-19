@@ -1,7 +1,11 @@
+import React from "react";
+import Properties from "./Demo Properties/Properties";
+
 const Home = () => {
   return (
     <div>
-      <p>This is home</p>
+      <h1 className="text-3xl font-bold text-center mt-8">Latest Properties</h1>
+      <Properties />
     </div>
   );
 };

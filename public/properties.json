@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "location": "New York",
+    "price": 500000,
+    "thumbnail": "/images/0.jpg",
+    "type": "Apartment",
+    "rooms": 3,
+    "bathrooms": 2,
+    "city": "New York City",
+    "state": "NY",
+    "photos": ["/images/0.jpg", "/images/1.jpg"]
+  },
+  {
+    "id": 2,
+    "location": "Los Angeles",
+    "price": 750000,
+    "thumbnail": "/images/1.jpg",
+    "type": "House",
+    "rooms": 5,
+    "bathrooms": 3,
+    "city": "Los Angeles",
+    "state": "CA",
+    "photos": ["/images/1.jpg", "/images/2.jpg"]
+  },
+  {
+    "id": 3,
+    "location": "San Francisco",
+    "price": 1200000,
+    "thumbnail": "/images/2.jpg",
+    "type": "Condo",
+    "rooms": 2,
+    "bathrooms": 2,
+    "city": "San Francisco",
+    "state": "CA",
+    "photos": ["/images/2.jpg", "/images/3.jpg"]
+  },
+  {
+    "id": 4,
+    "location": "Chicago",
+    "price": 400000,
+    "thumbnail": "/images/3.jpg",
+    "type": "Apartment",
+    "rooms": 4,
+    "bathrooms": 2,
+    "city": "Chicago",
+    "state": "IL",
+    "photos": ["/images/3.jpg", "/images/4.jpg"]
+  },
+  {
+    "id": 5,
+    "location": "Miami",
+    "price": 650000,
+    "thumbnail": "/images/4.jpg",
+    "type": "Townhouse",
+    "rooms": 3,
+    "bathrooms": 2,
+    "city": "Miami",
+    "state": "FL",
+    "photos": ["/images/4.jpg", "/images/5.jpg"]
+  },
+  {
+    "id": 6,
+    "location": "Austin",
+    "price": 550000,
+    "thumbnail": "/images/5.jpg",
+    "type": "House",
+    "rooms": 4,
+    "bathrooms": 3,
+    "city": "Austin",
+    "state": "TX",
+    "photos": ["/images/5.jpg", "/images/6.jpg"]
+  },
+  {
+    "id": 7,
+    "location": "Seattle",
+    "price": 900000,
+    "thumbnail": "/images/6.jpg",
+    "type": "Condo",
+    "rooms": 2,
+    "bathrooms": 2,
+    "city": "Seattle",
+    "state": "WA",
+    "photos": ["/images/6.jpg", "/images/7.jpg"]
+  },
+  {
+    "id": 8,
+    "location": "Dallas",
+    "price": 350000,
+    "thumbnail": "/images/7.jpg",
+    "type": "Apartment",
+    "rooms": 3,
+    "bathrooms": 1,
+    "city": "Dallas",
+    "state": "TX",
+    "photos": ["/images/7.jpg", "/images/8.jpg"]
+  },
+  {
+    "id": 9,
+    "location": "Boston",
+    "price": 850000,
+    "thumbnail": "/images/8.jpg",
+    "type": "House",
+    "rooms": 5,
+    "bathrooms": 4,
+    "city": "Boston",
+    "state": "MA",
+    "photos": ["/images/8.jpg", "/images/9.jpg"]
+  },
+  {
+    "id": 10,
+    "location": "Denver",
+    "price": 700000,
+    "thumbnail": "/images/9.jpg",
+    "type": "Townhouse",
+    "rooms": 4,
+    "bathrooms": 2,
+    "city": "Denver",
+    "state": "CO",
+    "photos": ["/images/9.jpg", "/images/0.jpg"]
+  }
+]
